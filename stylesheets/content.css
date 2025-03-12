@@ -1,3 +1,15 @@
+h1{
+    font-size: 7.55vw;
+    font-family: "BenzinBold";
+    grid-area: 2/2/3/3;
+}
+h4{
+    font-size: 1.3vw;
+    font-family: "BenzinBold";
+    color: #9E6D6D;
+    opacity: 20%;
+}
+
 body{
     width: 100%;
     overflow-x: hidden;
@@ -5,7 +17,7 @@ body{
 
 .screen{
     display: grid;
-    grid-template-columns: 1fr 46.875vw 1fr;
+    grid-template-columns: 1fr 46.927vw 1fr;
     grid-template-rows: 1fr 85% 1fr;
     width: 100vw;
     height: 100vh;
@@ -14,6 +26,44 @@ body{
 
 .screen1{
     background: #552828;
+}
+
+/* ЦЕНТРАЛЬНАЯ КОМПОЗИЦИЯ */
+.letterS{
+    color: #049D5B;
+    margin-left: 15.52vw;
+    margin-top: 35vw;
+    z-index: 7;
+}
+.letterH{
+    color: #F06D6C;
+    margin-left: 39.34vw;
+    margin-top: 17.65vw;
+    z-index: 1;
+}
+.letterA{
+    color: #EC4E4C;
+    margin-left: 39.118vw;
+    margin-top: 9.9vw;
+}
+
+.letterD{
+    color: #697BFF;
+    margin-left: 2.2vw;
+    margin-top: 12.5vw;
+    z-index: 7;
+}
+.letterO{
+    color: #EC4E4C;
+    margin-left: 36.5vw;
+    margin-top: 35.3vw;
+    z-index: 7;
+}
+.letterW{
+    color: #EC4E4C;
+    margin-left: 19.68vw;
+    margin-top: 25.3vw;
+    z-index: 7;
 }
 
 .yellowSquare{
@@ -81,7 +131,7 @@ body{
 
 .greenSquare{
     width: 8.85vw;
-    height: 6.77vw;
+    height: 6vw;
     background: #049D5B;
     margin-top: 35.1vw;
     margin-left: 22.4vw;
@@ -91,8 +141,7 @@ body{
 
 
 .yellowFigure{
-    width: 22.813vw;
-    /* height: 18.75vw; */
+    width: 22.5vw;
     height: 20vw;
     background: #FFC508;
     border-radius: 0 0 0 50%;
@@ -132,6 +181,18 @@ body{
     grid-area: 2/2/3/3;
     z-index: 2;
 }
+
+.eyeLeft{
+    width: 2.19vw;
+    height: 2.19vw;
+    background-color: #030B18;
+    border-radius: 50%;
+    margin-left: 12.188vw;
+    margin-top: 4.427vw;
+    grid-area: 2/2/3/3;
+    z-index: 5;
+}
+
 .beigeSquare{
     width: 4.635vw;
     height: 4.635vw;
@@ -194,6 +255,26 @@ body{
 .redStar{
     width: 15.625vw;
     height: 15.625vw;
+    animation: rotating 6s ease-in-out infinite;
+}
+    @keyframes rotating {
+        0% {}
+        75% {rotate: 360deg; }
+        100% {rotate: -360deg; }
+    }
+    .redStar:hover{
+        background-color: #FEA3A2;
+    }
+
+.eyeRight{
+    width: 2.19vw;
+    height: 2.19vw;
+    background-color: #030B18;
+    border-radius: 50%;
+    margin-left: 37.97vw;
+    margin-top: 6.77vw;
+    grid-area: 2/2/3/3;
+    z-index: 2;
 }
 
 .yellowStarContainer{
@@ -217,19 +298,19 @@ body{
     grid-area: 2/2/3/3;
 }
     .leftUp{
-        margin-left: 25.78vw;
+        margin-left: 25.28vw;
         margin-top: 23.438vw;
     }
     .rightUp{
-        margin-left: 35.75vw;
+        margin-left: 35.25vw;
         margin-top: 23.438vw;
     }
     .leftDown{
-        margin-left: 25.78vw;
+        margin-left: 25.28vw;
         margin-top: 33.4vw;
     }
     .rightDown{
-        margin-left: 35.75vw;
+        margin-left: 35.25vw;
         margin-top: 33.4vw;
     }
 
@@ -238,7 +319,7 @@ body{
     height: 3vw;
     background-color: #FFE0CB;
     margin-top: 26.3vw;
-    margin-left: 34.2vw;
+    margin-left: 33.75vw;
     grid-area: 2/2/3/3;
 }
 
@@ -247,10 +328,163 @@ body{
     height: 5vw;
     background-color: #FFE0CB;
     margin-top: 33.4vw;
-    margin-left: 30.52vw;
+    margin-left: 30vw;
     grid-area: 2/2/3/3;
 }
 
+.smallRedRectagle{
+    width: 1.5vw;
+    height: 2.1vw;
+    background-color: #EC4E4C;
+    transform-origin: bottom;
+    margin-left: 34.5vw;
+    margin-top: 26.1vw;
+    grid-area: 2/2/3/3;
+    animation: movingUpAndDown 6s ease-out infinite;
+}
+    @keyframes movingUpAndDown {
+        0%{ transform: scaleY(1); }
+        50%{ transform: scaleY(1.7); }
+        100%{ transform: scaleY(1); }
+    }
+
+.smallRedSquare{
+    width: 2.81vw;
+    height: 2.81vw;
+    background-color: #EC4E4C;
+    margin-left: 30.1vw;
+    margin-top: 35.6vw;
+    grid-area: 2/2/3/3;
+    animation: increasingAndDecreasing 6s ease-out infinite;
+}
+    @keyframes increasingAndDecreasing {
+        0%{ scale: 1; }
+        50%{ scale: 1.5; margin-top: 34.95vw; margin-left: 30.5vw;}
+        100%{ scale: 1; }
+    }
+
+.smallBeigeCircle{
+    width: 4.69vw;
+    height: 4.69vw;
+    background-color: #FFE0CB;
+    border-radius: 50%;
+    margin-left: 37.9vw;
+    margin-top: 36.1vw;
+    grid-area: 2/2/3/3;
+}
+
+.yellowRectangleColumn{
+    width: 7.813vw;
+    height: 3.3vw;
+    background-color: #FFC508;
+    margin-left: 39.1vw;
+    margin-top: 30.05vw;
+    grid-area: 2/2/3/3;
+}
+
+.redRectangleColumn{
+    width: 7.813vw;
+    height: 3.3vw;
+    background-color: #EC4E4C;
+    margin-left: 39.1vw;
+    margin-top: 26.75vw;
+    grid-area: 2/2/3/3;
+}
+
+.blueRectangleColumn{
+    width: 7.813vw;
+    height: 3.3vw;
+    background-color: #5065FF;
+    margin-left: 39.1vw;
+    margin-top: 23.45vw;
+    grid-area: 2/2/3/3;
+}
+
+.RedSquareColumn{
+    width: 7.813vw;
+    height: 7.813vw;
+    background-color: #EC4E4C;
+    margin-left: 39.1vw;
+    margin-top: 15.625vw;
+    grid-area: 2/2/3/3;
+}
+
+.noseRight{
+    width: 0;
+    height: 0;
+    margin-top: 3vw;
+    margin-left: 48vw;
+    border-left: 1.3vw solid transparent;
+    border-right: 1.3vw solid transparent;
+    border-bottom: 3.2vw solid #5065FF;
+    rotate: 68deg;
+    grid-area: 2/2/3/3;
+    
+    animation-play-state: running;
+    transition: border-bottom-color 0.5s ease-in-out;
+    animation: noseMove 6s ease-in-out infinite;
+    
+}
+.noseLeft{
+    width: 0;
+    height: 0;
+    margin-left: 3.3vw;
+    border-left: 2.2vw solid transparent;
+    border-right: 2.2vw solid transparent;
+    border-bottom: 4.8vw solid #EC4E4C;
+    rotate: -60deg;
+    grid-area: 2/2/3/3;
+    cursor: pointer;
+    animation-play-state: running;
+    animation: noseMove 6s ease-in-out infinite;
+}
+    @keyframes noseMove {
+        0%, 100% { transform: translateX(0) rotate(0deg); }
+        25% { transform: translateX(-2vw) rotate(-13deg); }
+        75% { transform: translateX(2vw) rotate(13deg); }
+    }
+    @keyframes shake {
+        0% { transform: translateX(0); }
+        25% { transform: translateX(-0.5vw); }
+        50% { transform: translateX(0.5vw); }
+        75% { transform: translateX(-0.5vw); }
+        100% { transform: translateX(0); }
+      }
+
+.scrollTip{
+    place-self: center;
+    grid-area: 3/2/4/3;
+    animation: scrollTip 2s ease-in-out infinite;
+}
+
+.arrowToDown{
+    width: 25px; 
+    height: 25px; 
+    box-shadow: -5px 5px 0 #9E6D6D;
+    opacity: 20%;
+    rotate: 315deg;
+    grid-area: 3/2/4/3;
+    animation: arrowsScrollTip 2s ease-in-out infinite;
+}
+
+.leftArrow{
+    margin-left: 34%;
+}
+
+.rightArrow{
+    margin-left: 63%;
+}
+
+    @keyframes arrowsScrollTip {
+        0%{margin-top: 0.6vw;}
+        50%{margin-top: 0.8vw;}
+        100%{margin-top: 0.6vw;}
+    }
+    @keyframes scrollTip {
+        0%{}
+        50%{margin-top: 0.5vw;}
+        100%{margin-top: 0}
+    }
 /*
 .move-area{
     width: 100vw;
