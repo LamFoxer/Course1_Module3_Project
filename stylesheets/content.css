@@ -3,6 +3,10 @@ h1{
     font-family: "BenzinBold";
     grid-area: 2/2/3/3;
 }
+h3{
+    font-size: 1.6vw;
+    font-family: "BenzinBold";
+}
 h4{
     font-size: 1.3vw;
     font-family: "BenzinBold";
@@ -15,20 +19,144 @@ body{
     overflow-x: hidden;
 }
 
-.screen{
+.screen1{
     display: grid;
-    grid-template-columns: 1fr 46.927vw 1fr;
+    grid-template-columns: 0.95fr 46.927vw 1fr;
     grid-template-rows: 1fr 85% 1fr;
     width: 100vw;
     height: 100vh;
-    
-}
-
-.screen1{
     background: #552828;
 }
 
+.screen2{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    width: 100vw;
+    height: 100vh;
+    background: #F8B52D;
+}
+
+.screen1Counter{
+    place-self: center;
+    grid-area: 1/2/2/3;
+}
+
+/* Летающие фигуры слева */
+.flyingSquare{
+    width: 1.5vw;
+    height: 1.5vw;
+    background-color: #FFC508;
+    rotate: 150deg;
+    margin-top: 24%;
+    margin-left: 58%;
+    grid-area: 2/1/3/2;
+    cursor: pointer;
+}
+
+.flyingTriangle{
+    width: 0;
+    height: 0;
+    border-left: 1.2vw solid transparent;
+    border-right: 1.2vw solid transparent;
+    border-bottom: 2.8vw solid #FFC508;
+    rotate: 120deg;
+    margin-top: 127%;
+    margin-left: 23%;
+    grid-area: 2/1/3/2;
+    cursor: pointer;
+}
+
+.flyingStarContainer1{
+    width: 6.1vw;
+    height: 6.1vw;
+    margin-top: 145%;
+    margin-left: 30%;
+    grid-area: 2/1/3/2;
+}
+
+.flyingStar1{
+    width: 6.1vw;
+    height: 6.1vw;
+    cursor: pointer;
+}
+
+.flyingTriangle2{
+    width: 0;
+    height: 0;
+    border-left: 1.5vw solid transparent;
+    border-right: 1.5vw solid transparent;
+    border-bottom: 3.2vw solid #5065FF;
+    rotate: 40deg;
+    margin-top: 174%;
+    margin-left: 56%;
+    grid-area: 2/1/3/2;
+    cursor: pointer;
+}
+
+/* Летающие фигуры справа */
+.flyingStarContainer2{
+    width: 9.5vw;
+    height: 9.5vw;
+    margin-top: 100%;
+    margin-left: 40%;
+    grid-area: 2/3/3/4;
+}
+
+.flyingStar2{
+    width: 9.5vw;
+    height: 9.5vw;
+    cursor: pointer;
+    /* animation: littleMoving 10s linear infinite; */
+}
+    @keyframes littleMoving{
+        0%{}
+        50%{ margin-top: -1vw; margin-left: 1vw }
+        100%{ margin-top: 0; margin-left: 1vw }
+    }
+
+.flyingTriangle3{
+    width: 0;
+    height: 0;
+    border-left: 1.4vw solid transparent;
+    border-right: 1.4vw solid transparent;
+    border-bottom: 3.1vw solid #FFE0CB;
+    rotate: 220deg;
+    margin-top: 78%;
+    margin-left: 64%;
+    grid-area: 2/3/3/4;
+    cursor: pointer;
+}
+
+.flyingTriangle4{
+    width: 0;
+    height: 0;
+    border-left: 1.1vw solid transparent;
+    border-right: 1.1vw solid transparent;
+    border-bottom: 2.4vw solid #FFE0CB;
+    rotate: -50deg;
+    margin-top: 135%;
+    margin-left: 72%;
+    grid-area: 2/3/3/4;
+    cursor: pointer;
+}
+
+.flyingSquare2{
+    width: 1.5vw;
+    height: 1.5vw;
+    background-color: #EC4E4C;
+    rotate: 150deg;
+    margin-top: 24%;
+    margin-left: 58%;
+    grid-area: 2/3/3/4;
+    cursor: pointer;
+}
+
 /* ЦЕНТРАЛЬНАЯ КОМПОЗИЦИЯ */
+.letter{
+    cursor: pointer;
+}
+
 .letterS{
     color: #049D5B;
     margin-left: 15.52vw;
@@ -52,6 +180,7 @@ body{
     margin-left: 2.2vw;
     margin-top: 12.5vw;
     z-index: 7;
+    pointer-events: none;
 }
 .letterO{
     color: #EC4E4C;
@@ -340,7 +469,7 @@ body{
     margin-left: 34.5vw;
     margin-top: 26.1vw;
     grid-area: 2/2/3/3;
-    animation: movingUpAndDown 6s ease-out infinite;
+    animation: movingUpAndDown 5s linear infinite;
 }
     @keyframes movingUpAndDown {
         0%{ transform: scaleY(1); }
@@ -355,7 +484,7 @@ body{
     margin-left: 30.1vw;
     margin-top: 35.6vw;
     grid-area: 2/2/3/3;
-    animation: increasingAndDecreasing 6s ease-out infinite;
+    animation: increasingAndDecreasing 5s linear infinite;
 }
     @keyframes increasingAndDecreasing {
         0%{ scale: 1; }
@@ -458,9 +587,9 @@ body{
 }
 
 .arrowToDown{
-    width: 25px; 
-    height: 25px; 
-    box-shadow: -5px 5px 0 #9E6D6D;
+    width: 1.4vw; 
+    height: 1.4vw; 
+    box-shadow: -0.26vw 0.26vw 0 #9E6D6D;
     opacity: 20%;
     rotate: 315deg;
     grid-area: 3/2/4/3;
@@ -485,6 +614,161 @@ body{
         50%{margin-top: 0.5vw;}
         100%{margin-top: 0}
     }
+
+/* ЭКРАН 2 */
+
+    .canvas{
+        width: 640px;
+        height: 640px;
+        background-color: #FFE0CB;
+        grid-area: 1/2/2/3;
+    }
+
+    .resetButtonContainer{
+        width: 8.6vw;
+        height: 3.2vw;
+        line-height: 3.2vw;
+        background-color: #EC4E4C;
+        place-items: center;
+        justify-self: start;
+        grid-area: 2/2/3/3;
+    }
+    
+    .leftCanvasText{
+        color: #EC4E4C;
+        writing-mode: vertical-rl;
+        grid-area: 1/1/2/2;
+    }
+
+    .bottomCanvasText{
+        color: #EC4E4C;
+        justify-self: end;
+        grid-area: 2/2/3/3;
+    }
+
+    .resetButtonText{
+        color: #FFC508;
+        /* margin-left: 1.7vw;
+        margin-top: 0.8vw; */
+        /* grid-area: 2/2/3/3; */
+    }
+
+    .redCornerLeft{
+        width: 0;
+        height: 0;
+        border-left: 13.385vw solid transparent;
+        border-right: 13.385vw solid transparent;
+        border-bottom: 13.385vw solid #EC4E4C;
+        transform: rotate(225deg);
+        justify-self: start;
+        align-self: end;
+        margin-left: -8.7vw;
+        margin-top: 8.7vw;
+        grid-area: 2/1/3/2;
+    }
+
+    .brush{
+        width: 3.23vw;
+        height: 3.23vw;
+        background-color: #EC4E4C;
+        margin-bottom: 1.51vw;
+        justify-self: start;
+        align-self: end;
+        grid-area: 1/3/2/4;
+    }
+
+    .marker{
+        width: 3.23vw;
+        height: 3.23vw;
+        background-color: #EC4E4C;
+        margin-bottom: 4.74vw;
+        justify-self: start;
+        align-self: end;
+        grid-area: 1/3/2/4;
+    }
+
+    .eraser{
+        width: 3.23vw;
+        height: 3.23vw;
+        background-color: #EC4E4C;
+        margin-bottom: 7.97vw;
+        justify-self: start;
+        align-self: end;
+        grid-area: 1/3/2/4;
+    }
+
+    .ChoosingButton{
+        width: 3.23vw;
+        height: 3.23vw;
+        background-color: #EC4E4C;
+        border-radius: 50%;
+        margin-top: 30px;
+        align-self: end;
+        grid-area: 1/3/2/4;
+        justify-items: center;
+    }
+        .greenChoosingButton{
+            margin-bottom: 7.97vw;
+            margin-left: 3.23vw;
+        }
+
+        .orangeChoosingButton{
+            margin-bottom: 4.74vw;
+            margin-left: 3.23vw;
+        }
+
+        .yellowChoosingButton{
+            margin-bottom: 1.51vw;
+            margin-left: 3.23vw;
+        }
+
+        .beigeChoosingButton{
+            margin-bottom: 4.74vw;
+            margin-left: 6.46vw;
+        }
+
+        .blueChoosingButton{
+            margin-bottom: 1.51vw;
+            margin-left: 6.46vw;
+        }
+
+        .redChoosingButton{
+            margin-bottom: -1.7vw;
+            margin-left: 6.46vw;
+        }
+        
+        .blackChoosingButton{
+            margin-bottom: 1.51vw;
+            margin-left: 9.7vw;
+        }
+
+    .circleColour{
+        width: 1.25vw;
+        height: 1.25vw;
+        border-radius: 50%;
+    }
+        .greenColour{
+            background-color: #049D5B;
+        }
+        .orangeColour{
+            background-color: #FF6800;
+        }
+        .yellowColour{
+            background-color: #FFC508;
+        }
+        .beigeColour{
+            background-color: #FEA3A2;
+        }
+        .blueColour{
+            background-color: #5065FF;
+        }
+        .blackColour{
+            background-color: #030B18;
+        }
+        .redColour{
+            background-color: #a92724;
+        }
+
 /*
 .move-area{
     width: 100vw;

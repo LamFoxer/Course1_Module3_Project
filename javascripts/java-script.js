@@ -53,7 +53,187 @@ document.addEventListener("DOMContentLoaded", function() {
     
 // АНИМАЦИЯ БУКВ
 
-    let letterS = document.querySelector(".letterS");
+    // const letter = document.querySelectorAll('.letter');
+    // const counterElement = document.querySelector('.counter');
+    // let counter = 0;
+
+    // letter.forEach(function(i) {
+    //     i.addEventListener('click', function() {
+    //         if (counter < 6 && !i.classList.contains('clicked')) {
+    //             counter++;
+    //             counterElement.textContent = counter;
+    //             i.classList.add('clicked');
+    //         }
+    //     });
+    // });
+
+    
+
+    // letters.forEach(function(i) {
+    //     i.addEventListener('click', function() {
+    //         findedLettersCounter++;
+    //         counter.textContent = findedLettersCounter;
+    //     });
+    // });
+
+    /*let letterS = document.querySelector("letterS");
+    let letterH = document.querySelector(".letterH");
+    let letterA = document.querySelector(".letterA");
+    let letterD = document.querySelector(".letterD");
+    let letterO = document.querySelector(".letterO");
+    let letterW = document.querySelector(".letterW");*/
+
+   
+    
+
+//СЧЁТЧИК
+
+//ПЕРЕТАСКИВАНИЕ
+
+    let dragableFigure = document.querySelectorAll(".flyingSquare, .flyingSquare2, .flyingTriangle, .flyingTriangle2, .flyingTriangle3, .flyingTriangle4, .flyingStar1, .flyingStar2");
+
+    dragableFigure.forEach(function (dragable) {
+        let isDragging = false;
+        let offsetX = 0;
+        let offsetY = 0;
+        let startX = 0;
+        let startY = 0;
+        let currentX = 0;
+        let currentY = 0;
+
+        dragable.addEventListener("mousedown", function (event) {
+            isDragging = true;
+
+            startX = event.clientX;
+            startY = event.clientY;
+
+            let transform = window.getComputedStyle(dragable).transform;
+
+            if (transform !== "none") {
+                let matrix = new DOMMatrix(transform);
+                currentX = matrix.m41;
+                currentY = matrix.m42;
+            }
+
+            function onMouseMove(event) {
+                if (isDragging) {
+                    offsetX = event.clientX - startX;
+                    offsetY = event.clientY - startY;
+
+                    dragable.style.transform = `translate(${currentX + offsetX}px, ${currentY + offsetY}px)`;
+                }
+            }
+
+            function onMouseUp() {
+                isDragging = false;
+
+                currentX += offsetX;
+                currentY += offsetY;
+
+                document.removeEventListener("mousemove", onMouseMove);
+                document.removeEventListener("mouseup", onMouseUp);
+            }
+
+            document.addEventListener("mousemove", onMouseMove);
+            document.addEventListener("mouseup", onMouseUp);
+        });
+    });
+
+
+    // ПОЛОТНО
+
+
+    const canvas = document.querySelector('.canvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth * 2;
+    canvas.height = window.innerHeight * 2;
+    ctx.fillStyle = '#FFE0CB';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    let isDrawing = false;
+    let currentTool = 'brush';
+    let currentColor = '#030B18';
+    let brushSize = 5;
+    let markerSize = 10;
+    let eraserSize = 20;
+
+    const resetButton = document.querySelector('.resetButtonContainer');
+    const brushButton = document.querySelector('.brush');
+    const markerButton = document.querySelector('.marker');
+    const eraserButton = document.querySelector('.eraser');
+    const colorButtons = document.querySelectorAll('.ChoosingButton');
+
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseout', stopDrawing);
+
+    brushButton.addEventListener('click', function() {
+        currentTool = 'brush';
+        updateToolButtons(brushButton);
+    });
+
+    markerButton.addEventListener('click', function() {
+        currentTool = 'marker';
+        updateToolButtons(markerButton);
+    });
+
+    eraserButton.addEventListener('click', function() {
+        currentTool = 'eraser';
+        updateToolButtons(eraserButton);
+    });
+
+    colorButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            const colorCircle = button.querySelector('.circleColour');
+            currentColor = window.getComputedStyle(colorCircle).backgroundColor;
+            updateColorButtons(button);
+        });
+    });
+
+    resetButton.addEventListener('click', function() {
+        ctx.fillStyle = '#FFE0CB';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    });
+
+    function startDrawing(e) {
+        isDrawing = true;
+        ctx.beginPath();
+        ctx.moveTo(e.offsetX, e.offsetY);
+    }
+
+    function draw(e) {
+        if (!isDrawing) return;
+
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.strokeStyle = currentTool === 'eraser' ? '#FFE0CB' : currentColor;
+        ctx.lineWidth = currentTool === 'brush' ? brushSize : currentTool === 'marker' ? markerSize : eraserSize;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.stroke();
+    }
+
+    function stopDrawing() {
+        isDrawing = false;
+        ctx.closePath();
+    }
+
+    function updateToolButtons(activeButton) {
+        const tools = [brushButton, markerButton, eraserButton];
+        tools.forEach( function(tool) {
+            tool.style.backgroundColor = tool === activeButton ? '#a92724' : '#EC4E4C';
+        });
+    }
+
+    function updateColorButtons(activeButton) {
+        colorButtons.forEach( function(button) {
+            const colorCircle = button.querySelector('.circleColour');
+            const circleSize = button === activeButton ? '1.6vw' : '1.25vw';
+            colorCircle.style.width = circleSize;
+            colorCircle.style.height = circleSize;
+        });
+    }
 
     /*function handleMouseMove(event){
         let eyes = document.querySelectorAll(".eye");

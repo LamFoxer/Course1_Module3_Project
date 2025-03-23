@@ -10,15 +10,34 @@
 </head>
 <body>
     
-<section class="screen screen1">
-    <!-- Центральная композиция -->
+<section class="screen1">
 
-    <h1 class="letterS">S</h1>
-    <h1 class="letterH">H</h1>
-    <h1 class="letterA">A</h1>
-    <h1 class="letterD">D</h1>
-    <h1 class="letterO">O</h1>
-    <h1 class="letterW">W</h1>
+    <h4 class="screen1Counter"> <span class="counter">0</span> /6</h4>
+
+    <!-- Левые летающие фигуры -->
+    <div class="flyingSquare"></div>
+    <div class="flyingTriangle"></div>
+    <div class="flyingTriangle2"></div>
+    <div class="flyingStarContainer1">
+        <img class="flyingStar1" src="./img/beigeStar.svg" alt="beigeStar">
+    </div>
+
+    <!-- Правые летающие фигуры -->
+    <div class="flyingSquare2"></div>
+    <div class="flyingTriangle3"></div>
+    <div class="flyingTriangle4"></div>
+    <div class="flyingStarContainer2">
+        <img class="flyingStar2" src="./img/yellowStarSmall.svg" alt="yellowStarSmall">
+    </div>
+
+
+    <!-- Центральная композиция -->
+    <h1 class="letterS letter">S</h1>
+    <h1 class="letterH letter">H</h1>
+    <h1 class="letterA letter">A</h1>
+    <h1 class="letterD letter">D</h1>
+    <h1 class="letterO letter">O</h1>
+    <h1 class="letterW letter">W</h1>
 
     <div class="noseLeft"></div>
     <div class="noseRight"></div>
@@ -69,12 +88,57 @@
     <div class="arrowToDown leftArrow"></div>
     <div class="arrowToDown rightArrow"></div>
     <h4 class="scrollTip">scroll down</h4>
+</section>
 
+<section class="screen2">
+
+    <canvas class="canvas"></canvas>
+    <div class="resetButtonContainer">
+        <h3 class="resetButtonText">reset</h3>
+    </div>
+    <h3 class="bottomCanvasText">OF YOUR DREAMS</h3>
+    <h3 class="leftCanvasText">DRAW THE SHADOW</h3>
+    <div class="redCornerLeft"></div>
+    <div class="redCornerRight"></div>
+
+    <!-- инструменты -->
+    <div class="eraser"></div>
+    <div class="marker"></div>
+    <div class="brush"></div>
+
+    <div class="greenChoosingButton ChoosingButton">
+        <div class="greenColour circleColour"></div>
+    </div>
+
+    <div class="orangeChoosingButton ChoosingButton">
+        <div class="orangeColour circleColour"></div>
+    </div>
+
+    <div class="yellowChoosingButton ChoosingButton">
+        <div class="yellowColour circleColour"></div>
+    </div>
+
+    <div class="beigeChoosingButton ChoosingButton">
+        <div class="beigeColour circleColour"></div>
+    </div>
+
+    <div class="blueChoosingButton ChoosingButton">
+        <div class="blueColour circleColour"></div>
+    </div>
+
+    <div class="blackChoosingButton ChoosingButton">
+        <div class="blackColour circleColour"></div>
+    </div>
+
+    <div class="redChoosingButton ChoosingButton">
+        <div class="redColour circleColour"></div>
+    </div>
     
-    
 
-<!-- </section>
 
+</section>
+
+<!-- 
 <section class="move-area">
     <div class="container">
         <div class="eye"></div>
