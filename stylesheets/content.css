@@ -620,8 +620,8 @@ body{
     .canvas{
         width: 640px;
         height: 640px;
-        background-color: #FFE0CB;
         grid-area: 1/2/2/3;
+        
     }
 
     .resetButtonContainer{

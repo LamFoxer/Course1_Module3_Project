@@ -1,48 +1,46 @@
 document.addEventListener("DOMContentLoaded", function() {
 
+    // Анимация красного носа
     const nose = document.querySelector('.noseLeft');
     const nose2 = document.querySelector('.noseRight');
     const beigeCircle = document.querySelector('.beigeCircle');
 
-    nose.addEventListener('click', () => {
-        // Анимация красного носа
+    nose.addEventListener('click', function() {
+
         nose.style.animationPlayState = 'paused';
         nose.style.animation = 'shake 0.5s ease-in-out';
         nose.style.borderBottom = '4.8vw solid #a92724';
-
-        setTimeout(() => {
-            nose.style.animation = '';
-            nose.style.borderBottom = '4.8vw solid #EC4E4C';
-        }, 500);
-
-        setTimeout(() => {
-            nose.style.animationPlayState = 'running';
-        }, 3000);
 
         // Анимация бежевого круга
         beigeCircle.style.animation = 'shake 0.5s ease-in-out';
         beigeCircle.style.backgroundColor = '#EC4E4C';
 
-        setTimeout(() => {
+        setTimeout(function() {
+            nose.style.animation = '';
+            nose.style.borderBottom = '4.8vw solid #EC4E4C';
+
             beigeCircle.style.animation = '';
             beigeCircle.style.backgroundColor = '';
         }, 500);
+
+        setTimeout(function() {
+            nose.style.animationPlayState = 'running';
+        }, 3000);
     });
 
+    // Анимация синего носа
     nose2.addEventListener('click', function() {
-        // Анимация синего носа
         nose2.style.borderBottom = '3.2vw solid #8895fd';
 
-        setTimeout(() => {
+        setTimeout(function() {
             nose2.style.borderBottom = '3.2vw solid #5065FF';
         }, 500);
     });
 
-// АНИМАЦИЯ ГЛАЗ
-
+    // Анимация глаз
     let eye = document.querySelectorAll(".eyeLeft");
     
-    window.addEventListener("mousemove", (e) => {
+    window.addEventListener("mousemove", function(e) {
         eye.forEach(function(eye) {
             let rect = eye.getBoundingClientRect();
             let x = (e.pageX - rect.left) / 50 + "px";
@@ -88,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //СЧЁТЧИК
 
-//ПЕРЕТАСКИВАНИЕ
+//Перетаскивания
 
     let dragableFigure = document.querySelectorAll(".flyingSquare, .flyingSquare2, .flyingTriangle, .flyingTriangle2, .flyingTriangle3, .flyingTriangle4, .flyingStar1, .flyingStar2");
 
@@ -146,8 +144,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const canvas = document.querySelector('.canvas');
     const ctx = canvas.getContext('2d');
 
-    canvas.width = window.innerWidth * 2;
-    canvas.height = window.innerHeight * 2;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     ctx.fillStyle = '#FFE0CB';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -168,6 +166,10 @@ document.addEventListener("DOMContentLoaded", function() {
     canvas.addEventListener('mousemove', draw);
     canvas.addEventListener('mouseup', stopDrawing);
     canvas.addEventListener('mouseout', stopDrawing);
+
+    canvas.addEventListener('touchstart', startDrawing);
+    canvas.addEventListener('touchmove', draw);
+    canvas.addEventListener('touchend', stopDrawing);
 
     brushButton.addEventListener('click', function() {
         currentTool = 'brush';
@@ -197,16 +199,42 @@ document.addEventListener("DOMContentLoaded", function() {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     });
 
+
+    function getCoordinates(e) {
+        if (e.offsetX !== undefined && e.offsetY !== undefined) {
+            return { x: e.offsetX, y: e.offsetY };
+        }
+        if (e.touches && e.touches[0]) {
+            const rect = canvas.getBoundingClientRect();
+            return {
+                x: e.touches[0].clientX - rect.left,
+                y: e.touches[0].clientY - rect.top
+            };
+        }
+        return { x: 0, y: 0 };
+    }
+    
+    canvas.addEventListener('touchmove', function(e) {
+        if (isDrawing) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+
     function startDrawing(e) {
+        e.preventDefault();
         isDrawing = true;
+        const { x, y } = getCoordinates(e);
         ctx.beginPath();
         ctx.moveTo(e.offsetX, e.offsetY);
     }
 
     function draw(e) {
+        e.preventDefault();
         if (!isDrawing) return;
 
-        ctx.lineTo(e.offsetX, e.offsetY);
+        const { x, y } = getCoordinates(e);
+        ctx.lineTo(x, y);
+        // ctx.lineTo(e.offsetX, e.offsetY);
         ctx.strokeStyle = currentTool === 'eraser' ? '#FFE0CB' : currentColor;
         ctx.lineWidth = currentTool === 'brush' ? brushSize : currentTool === 'marker' ? markerSize : eraserSize;
         ctx.lineCap = 'round';
