@@ -223,9 +223,33 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener('load', resizeCanvas);
     window.addEventListener('resize', resizeCanvas);
 
+// 
+
+    const saveButton = document.querySelector('.saveButtonContainer');
+    const beigeSquare = document.querySelector('.s4-beigeSquare');
+    const loadButton = document.querySelector('.loadButtonContainer');
+
     function saveDrawing() {
-        localStorage.setItem('drawingData', JSON.stringify(drawingData));
+        const dataURL = canvas.toDataURL('image/png');
+        localStorage.setItem('savedCanvas', dataURL);
+        // alert('Рисунок сохранён!');
     }
+
+    function loadDrawing() {
+        const savedCanvas = localStorage.getItem('savedCanvas');
+        if (savedCanvas) {
+            beigeSquare.style.backgroundImage = `url(${savedCanvas})`;
+            beigeSquare.style.backgroundSize = 'cover';
+            beigeSquare.style.backgroundRepeat = 'no-repeat';
+            beigeSquare.style.backgroundPosition = 'center';
+            // alert('Рисунок загружен!');
+        } else {
+            alert('Нет сохранённого рисунка!');
+        }
+    }
+
+    saveButton.addEventListener('click', saveDrawing);
+    loadButton.addEventListener('click', loadDrawing);
 
 
     //АНИМАЦИЯ ЗА КУРСОРОМ
