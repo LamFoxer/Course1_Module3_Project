@@ -57,6 +57,7 @@ body{
     width: 100vw;
     height: 100vh;
     background: #FFE0CB;
+    overflow: hidden;
 }
 
 .screen1Counter{
@@ -879,16 +880,6 @@ body{
 
 /* Экран 3 */
 
-/* .greenLeftCorner1Container{
-    width: 20vw;
-    height: 26.615vw;
-    background-color: #552828;
-    align-self: start;
-    justify-self: start;
-    grid-area: 1/1/1/1;
-    z-index: 1;
-} */
-
 .canvas2{
     position: absolute;
     top: 0;
@@ -1189,13 +1180,16 @@ body{
     height: 14.64vw;
     align-self: end;
     margin-left: 11vw;
+    margin-top: 5vw;
     grid-area: 3/3/4/4;
     animation: rotating 6s ease-in-out infinite;
+    overflow: hidden;
 }
 
 .s4-blueStar{
     width: 14.64vw;
     height: 14.64vw;
+    overflow: hidden;
 }
 
 .s4-orangeRectangle{
