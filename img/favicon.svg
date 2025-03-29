@@ -1,0 +1,19 @@
+<svg width="377" height="300" viewBox="0 0 377 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_3683_3616)">
+<path d="M-0.595548 -0.168028L111.983 17.356L59.3209 96.7393L-0.595548 -0.168028Z" fill="#EC4E4C"/>
+<circle cx="227" cy="150" r="150" fill="#FEA3A2"/>
+<circle cx="227" cy="150" r="90" fill="#049D5B"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M227 300C309.843 300 377 232.843 377 150H227V300Z" fill="#5065FF"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M229 270C295.274 270 349 216.274 349 150H227V269.984C227.665 269.995 228.332 270 229 270Z" fill="#FFC508"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M227 240C276.706 240 317 199.706 317 150H227V240Z" fill="#030B18"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M227 210C260.137 210 287 183.137 287 150H227V210Z" fill="#FFC508"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M227 180C243.613 179.75 257.001 166.624 257.001 150.469C257.001 150.312 257 150.156 256.997 150H227V180Z" fill="#FF6803"/>
+<rect x="137" y="61" width="89" height="89" fill="#FFE0CB"/>
+<circle cx="182" cy="106" r="21" fill="#030B18"/>
+</g>
+<defs>
+<clipPath id="clip0_3683_3616">
+<rect width="377" height="300" fill="white"/>
+</clipPath>
+</defs>
+</svg>

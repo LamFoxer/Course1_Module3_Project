@@ -144,10 +144,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const canvas = document.querySelector('.canvas');
     const ctx = canvas.getContext('2d');
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    ctx.fillStyle = '#FFE0CB';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // canvas.width = 800;
+    // canvas.height = 800;
+    // ctx.fillStyle = '#FFE0CB';
+    // ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     let isDrawing = false;
     let currentTool = 'brush';
@@ -217,6 +217,7 @@ document.addEventListener("DOMContentLoaded", function() {
     canvas.addEventListener('touchmove', function(e) {
         if (isDrawing) {
             e.preventDefault();
+            draw(e);
         }
     }, { passive: false });
 
@@ -225,16 +226,15 @@ document.addEventListener("DOMContentLoaded", function() {
         isDrawing = true;
         const { x, y } = getCoordinates(e);
         ctx.beginPath();
-        ctx.moveTo(e.offsetX, e.offsetY);
+        ctx.moveTo(x, y);
     }
-
+    
     function draw(e) {
         e.preventDefault();
         if (!isDrawing) return;
-
+    
         const { x, y } = getCoordinates(e);
         ctx.lineTo(x, y);
-        // ctx.lineTo(e.offsetX, e.offsetY);
         ctx.strokeStyle = currentTool === 'eraser' ? '#FFE0CB' : currentColor;
         ctx.lineWidth = currentTool === 'brush' ? brushSize : currentTool === 'marker' ? markerSize : eraserSize;
         ctx.lineCap = 'round';
@@ -244,7 +244,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function stopDrawing() {
         isDrawing = false;
-        ctx.closePath();
+        // ctx.closePath();
     }
 
     function updateToolButtons(activeButton) {
@@ -262,6 +262,17 @@ document.addEventListener("DOMContentLoaded", function() {
             colorCircle.style.height = circleSize;
         });
     }
+
+    function resizeCanvas() {
+        const canvas = document.querySelector('.canvas');
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+        ctx.fillStyle = '#FFE0CB';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    window.addEventListener('load', resizeCanvas);
+    window.addEventListener('resize', resizeCanvas);
 
     /*function handleMouseMove(event){
         let eyes = document.querySelectorAll(".eye");
