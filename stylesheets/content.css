@@ -201,7 +201,7 @@ body{
     color: #F06D6C;
     margin-left: 39.34vw;
     margin-top: 17.65vw;
-    z-index: 1;
+    z-index: 7;
 }
 .letterA{
     color: #EC4E4C;
@@ -226,7 +226,7 @@ body{
     color: #EC4E4C;
     margin-left: 19.68vw;
     margin-top: 25.3vw;
-    z-index: 7;
+    z-index: 9;
 }
 
 .yellowSquare{
@@ -291,7 +291,7 @@ body{
     justify-self: center;
     margin-top: 31.2vw;
     grid-area: 2/2/3/3;
-    z-index: 8;
+    z-index: 10;
 }
 
 .greenSquare{
@@ -1163,12 +1163,26 @@ body{
 .s4-orangeCircle{
     width: 22.52vw;
     height: 22.52vw;
-    background-color: #FF6800;
+    background-color: #a92724;
     border-radius: 50%;
     grid-area: 3/1/4/2;
     margin-left: 2vw;
     align-self: end;
+    animation: semicolor 30s infinite ease-in-out;
 }
+    @keyframes semicolor{
+        0% {}
+        10% {background-color:#EC4E4C;}
+        20% {background-color: #FF6800;}
+        30% {background-color:#F8B52D;}
+        40% {background-color:#049D5B;}
+        50% {background-color:#697BFF;}
+        60% {background-color:#5065FF;}
+        70% {background-color: #64129b;}
+        80% {background-color: #a31a55;}
+        90% {background-color: #FF6800;}
+        100% {background-color: #EC4E4C;}
+    }
 
 .s4-blueStarContainer{
     width: 14.64vw;
@@ -1176,6 +1190,7 @@ body{
     align-self: end;
     margin-left: 11vw;
     grid-area: 3/3/4/4;
+    animation: rotating 6s ease-in-out infinite;
 }
 
 .s4-blueStar{
@@ -1190,7 +1205,13 @@ body{
     margin-top: 12vw;
     justify-self: end;
     grid-area: 2/3/3/4;
+    animation: tudak-sudak 5s infinite linear;
 }
+    @keyframes tudak-sudak{
+        0% {}
+        50% {width: 18vw;}
+        0% {width: 21.667vw;}
+    }
 
 .s4-blueRectangle{
     width: 16.563vw;
@@ -1199,7 +1220,14 @@ body{
     margin-top: 2vw;
     justify-self: start;
     grid-area: 2/1/3/2;
+    animation: tudak-sudak2 5s infinite linear;
 }
+    @keyframes tudak-sudak2{
+        0% {}
+        50% {width: 12vw;}
+        0% {width: 16.563vw;}
+    }
+
 
 .loadButtonContainer{
     width: 5.94vw;
