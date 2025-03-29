@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-    // Анимация красного носа
+    // АНИМАЦИЯ ХВАТАНИЯ ЗА КРАСНЫЙ НОС
+
     const nose = document.querySelector('.noseLeft');
     const nose2 = document.querySelector('.noseRight');
     const beigeCircle = document.querySelector('.beigeCircle');
@@ -11,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function() {
         nose.style.animation = 'shake 0.5s ease-in-out';
         nose.style.borderBottom = '4.8vw solid #a92724';
 
-        // Анимация бежевого круга
         beigeCircle.style.animation = 'shake 0.5s ease-in-out';
         beigeCircle.style.backgroundColor = '#EC4E4C';
 
@@ -28,7 +28,8 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 3000);
     });
 
-    // Анимация синего носа
+    // АНИМАЦИЯ ХВАТАНИЯ ЗА СИНИЙ НОС
+
     nose2.addEventListener('click', function() {
         nose2.style.borderBottom = '3.2vw solid #8895fd';
 
@@ -37,7 +38,8 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 500);
     });
 
-    // Анимация глаз
+    // АНИМАЦИЯ ДВИЖЕНИЯ ГЛАЗА ЗА МЫШКОЙ
+    
     let eye = document.querySelectorAll(".eyeLeft");
     
     window.addEventListener("mousemove", function(e) {
@@ -49,105 +51,37 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
     
-// АНИМАЦИЯ БУКВ
+    // АНИМАЦИЯ БУКВ
 
-    // const letter = document.querySelectorAll('.letter');
-    // const counterElement = document.querySelector('.counter');
-    // let counter = 0;
-
-    // letter.forEach(function(i) {
-    //     i.addEventListener('click', function() {
-    //         if (counter < 6 && !i.classList.contains('clicked')) {
-    //             counter++;
-    //             counterElement.textContent = counter;
-    //             i.classList.add('clicked');
-    //         }
-    //     });
-    // });
-
+    const letters = document.querySelectorAll('.letter');
+    const counterElement = document.querySelector('.counter');
+    let counter = 0;
     
+    letters.forEach(function(letter) {
+        letter.addEventListener('click', function() {
+            if (!this.classList.contains('clicked')) {
+                this.style.color = '#030B18';
+                this.classList.add('clicked');
+                counter++;
+                counterElement.textContent = counter;
 
-    // letters.forEach(function(i) {
-    //     i.addEventListener('click', function() {
-    //         findedLettersCounter++;
-    //         counter.textContent = findedLettersCounter;
-    //     });
-    // });
-
-    /*let letterS = document.querySelector("letterS");
-    let letterH = document.querySelector(".letterH");
-    let letterA = document.querySelector(".letterA");
-    let letterD = document.querySelector(".letterD");
-    let letterO = document.querySelector(".letterO");
-    let letterW = document.querySelector(".letterW");*/
-
-   
-    
-
-//СЧЁТЧИК
-
-//Перетаскивания
-
-    let dragableFigure = document.querySelectorAll(".flyingSquare, .flyingSquare2, .flyingTriangle, .flyingTriangle2, .flyingTriangle3, .flyingTriangle4, .flyingStar1, .flyingStar2");
-
-    dragableFigure.forEach(function (dragable) {
-        let isDragging = false;
-        let offsetX = 0;
-        let offsetY = 0;
-        let startX = 0;
-        let startY = 0;
-        let currentX = 0;
-        let currentY = 0;
-
-        dragable.addEventListener("mousedown", function (event) {
-            isDragging = true;
-
-            startX = event.clientX;
-            startY = event.clientY;
-
-            let transform = window.getComputedStyle(dragable).transform;
-
-            if (transform !== "none") {
-                let matrix = new DOMMatrix(transform);
-                currentX = matrix.m41;
-                currentY = matrix.m42;
-            }
-
-            function onMouseMove(event) {
-                if (isDragging) {
-                    offsetX = event.clientX - startX;
-                    offsetY = event.clientY - startY;
-
-                    dragable.style.transform = `translate(${currentX + offsetX}px, ${currentY + offsetY}px)`;
+                if (counter === letters.length) {
+                    document.querySelectorAll('.letter').forEach(function(l) {
+                        l.style.opacity = '0%';
+                        l.style.transition = 'opacity 1s ease';
+                    });
+                    setTimeout(function() {
+                        alert('Congratulations! You have received a promo code for a 25% discount — SHADOW.');
+                    }, 300);
                 }
             }
-
-            function onMouseUp() {
-                isDragging = false;
-
-                currentX += offsetX;
-                currentY += offsetY;
-
-                document.removeEventListener("mousemove", onMouseMove);
-                document.removeEventListener("mouseup", onMouseUp);
-            }
-
-            document.addEventListener("mousemove", onMouseMove);
-            document.addEventListener("mouseup", onMouseUp);
         });
     });
 
-
-    // ПОЛОТНО
-
+    // ХОЛСТ
 
     const canvas = document.querySelector('.canvas');
     const ctx = canvas.getContext('2d');
-
-    // canvas.width = 800;
-    // canvas.height = 800;
-    // ctx.fillStyle = '#FFE0CB';
-    // ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     let isDrawing = false;
     let currentTool = 'brush';
@@ -155,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let brushSize = 5;
     let markerSize = 10;
     let eraserSize = 20;
+    let drawingData = [];
 
     const resetButton = document.querySelector('.resetButtonContainer');
     const brushButton = document.querySelector('.brush');
@@ -170,6 +105,7 @@ document.addEventListener("DOMContentLoaded", function() {
     canvas.addEventListener('touchstart', startDrawing);
     canvas.addEventListener('touchmove', draw);
     canvas.addEventListener('touchend', stopDrawing);
+    
 
     brushButton.addEventListener('click', function() {
         currentTool = 'brush';
@@ -234,6 +170,15 @@ document.addEventListener("DOMContentLoaded", function() {
         if (!isDrawing) return;
     
         const { x, y } = getCoordinates(e);
+
+        drawingData.push({
+            x, y,
+            tool: currentTool,
+            color: currentTool === 'eraser' ? '#FFE0CB' : currentColor,
+            size: currentTool === 'brush' ? brushSize : currentTool === 'marker' ? markerSize : eraserSize,
+            type: 'draw'
+        });
+
         ctx.lineTo(x, y);
         ctx.strokeStyle = currentTool === 'eraser' ? '#FFE0CB' : currentColor;
         ctx.lineWidth = currentTool === 'brush' ? brushSize : currentTool === 'marker' ? markerSize : eraserSize;
@@ -255,12 +200,16 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function updateColorButtons(activeButton) {
-        colorButtons.forEach( function(button) {
+        colorButtons.forEach(function(button) {
             const colorCircle = button.querySelector('.circleColour');
-            const circleSize = button === activeButton ? '1.6vw' : '1.25vw';
+            const circleSize = button === activeButton ? '2.3vw' : '1.25vw';
             colorCircle.style.width = circleSize;
             colorCircle.style.height = circleSize;
         });
+        const defaultBlackButton = document.querySelector('.blackColour').closest('.ChoosingButton');
+        if (!currentColor || currentColor === 'rgb(3, 11, 24)' || currentColor === '#030B18') {
+            updateColorButtons(defaultBlackButton);
+        }
     }
 
     function resizeCanvas() {
@@ -273,6 +222,83 @@ document.addEventListener("DOMContentLoaded", function() {
 
     window.addEventListener('load', resizeCanvas);
     window.addEventListener('resize', resizeCanvas);
+
+    function saveDrawing() {
+        localStorage.setItem('drawingData', JSON.stringify(drawingData));
+    }
+
+
+    //АНИМАЦИЯ ЗА КУРСОРОМ
+
+
+    const canvasContainer = document.querySelector('.canvas2');
+    if (!canvasContainer) return;
+
+    const canvas3 = document.createElement('canvas');
+    canvasContainer.appendChild(canvas3);
+    const ctx2 = canvas3.getContext('2d');
+
+    function resizeCanvas2() {
+        canvas3.width = canvasContainer.clientWidth;
+        canvas3.height = canvasContainer.clientHeight;
+    }
+    resizeCanvas2();
+    window.addEventListener('resize', resizeCanvas2);
+
+    let particles = [];
+    let mouseX = null;
+    let mouseY = null;
+
+    canvasContainer.addEventListener('mousemove', function(e2) {
+        const rect2 = canvas3.getBoundingClientRect();
+        mouseX = e2.clientX - rect2.left;
+        mouseY = e2.clientY - rect2.top;
+
+        if (mouseX >= 0 && mouseY >= 0 && mouseX <= canvas3.width && mouseY <= canvas3.height) {
+            for (let i = 0; i < 3; i++) {
+                particles.push({
+                    x: mouseX,
+                    y: mouseY,
+                    size: Math.random() * 5 + 1,
+                    color: `hsl(${Math.random() * 360}, 100%, 50%)`,
+                    speedX: Math.random() * 2 - 1,
+                    speedY: Math.random() * 2 - 1,
+                    life: 100
+                });
+            }
+        }
+    });
+
+    canvasContainer.addEventListener('mouseleave', function() {
+        mouseX = null;
+        mouseY = null;
+    });
+
+    function animate() {
+        ctx2.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx2.fillRect(0, 0, canvas3.width, canvas3.height);
+
+        for (let i = 0; i < particles.length; i++) {
+            const p = particles[i];
+            ctx2.fillStyle = p.color;
+            ctx2.beginPath();
+            ctx2.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx2.fill();
+
+            p.x += p.speedX;
+            p.y += p.speedY;
+            p.life--;
+
+            if (p.life <= 0) {
+                particles.splice(i, 1);
+                i--;
+            }
+        }
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
 
     /*function handleMouseMove(event){
         let eyes = document.querySelectorAll(".eye");
@@ -300,4 +326,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.addEventListener("mousemove", cursorColor);
 
     }*/
+        currentColor = '#030B18';
+        const defaultBlackButton = document.querySelector('.blackColour').closest('.ChoosingButton');
+        updateColorButtons(defaultBlackButton);
 });

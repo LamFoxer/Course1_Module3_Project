@@ -2,6 +2,9 @@ h1{
     font-size: 7.55vw;
     font-family: "BenzinBold";
     grid-area: 2/2/3/3;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    user-select: none;
 }
 h3{
     font-size: 1.6vw;
@@ -38,9 +41,10 @@ body{
 }
 
 .screen3{
+    position: relative;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
     width: 100vw;
     height: 100vh;
     background: #030B18;
@@ -49,7 +53,7 @@ body{
 .screen4{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 10% 50% 40%;
     width: 100vw;
     height: 100vh;
     background: #FFE0CB;
@@ -69,7 +73,6 @@ body{
     margin-top: 24%;
     margin-left: 58%;
     grid-area: 2/1/3/2;
-    cursor: pointer;
 }
 
 .flyingTriangle{
@@ -82,7 +85,6 @@ body{
     margin-top: 127%;
     margin-left: 23%;
     grid-area: 2/1/3/2;
-    cursor: pointer;
 }
 
 .flyingStarContainer1{
@@ -91,12 +93,13 @@ body{
     margin-top: 145%;
     margin-left: 30%;
     grid-area: 2/1/3/2;
+    user-select: none;
 }
 
 .flyingStar1{
     width: 6.1vw;
     height: 6.1vw;
-    cursor: pointer;
+    user-select: none;
 }
 
 .flyingTriangle2{
@@ -109,7 +112,6 @@ body{
     margin-top: 174%;
     margin-left: 56%;
     grid-area: 2/1/3/2;
-    cursor: pointer;
 }
 
 /* Летающие фигуры справа */
@@ -119,18 +121,19 @@ body{
     margin-top: 100%;
     margin-left: 40%;
     grid-area: 2/3/3/4;
+    user-select: none;
 }
 
 .flyingStar2{
     width: 9.5vw;
     height: 9.5vw;
-    cursor: pointer;
-    /* animation: littleMoving 10s linear infinite; */
+    user-select: none;
+    animation: littleMoving 10s linear infinite;
 }
     @keyframes littleMoving{
         0%{}
-        50%{ margin-top: -1vw; margin-left: 1vw }
-        100%{ margin-top: 0; margin-left: 1vw }
+        50%{ margin-top: -0.7vw; margin-left: 0.7vw }
+        100%{ margin-top: 0; margin-left: 0.7vw }
     }
 
 .flyingTriangle3{
@@ -143,7 +146,6 @@ body{
     margin-top: 78%;
     margin-left: 64%;
     grid-area: 2/3/3/4;
-    cursor: pointer;
 }
 
 .flyingTriangle4{
@@ -156,7 +158,6 @@ body{
     margin-top: 135%;
     margin-left: 72%;
     grid-area: 2/3/3/4;
-    cursor: pointer;
 }
 
 .flyingSquare2{
@@ -167,12 +168,21 @@ body{
     margin-top: 24%;
     margin-left: 58%;
     grid-area: 2/3/3/4;
-    cursor: pointer;
 }
 
 /* ЦЕНТРАЛЬНАЯ КОМПОЗИЦИЯ */
+
 .letter{
+    /* position: absolute; */
+    line-height: 1;
+    width: min-content;
+    height: min-content;
     cursor: pointer;
+    user-select: none;
+    /* transform: translate(-50%, -50%); */
+
+    /* display: inline-block;
+    line-height: 1; */
 }
 
 .letterS{
@@ -198,7 +208,6 @@ body{
     margin-left: 2.2vw;
     margin-top: 12.5vw;
     z-index: 7;
-    pointer-events: none;
 }
 .letterO{
     color: #EC4E4C;
@@ -396,12 +405,14 @@ body{
     height: 15.625vw;
     margin-top: 23.438vw;
     grid-area: 2/2/3/3;
+    user-select: none;
     z-index: 5;
 }
 
 .redStar{
     width: 15.625vw;
     height: 15.625vw;
+    user-select: none;
     animation: rotating 6s ease-in-out infinite;
 }
     @keyframes rotating {
@@ -430,11 +441,13 @@ body{
     margin-left: 31.25vw;
     grid-area: 2/2/3/3;
     z-index: 1;
+    pointer-events: none;
 }
 
 .yellowStar{
     width: 15.625vw;
     height: 15.625vw;
+    pointer-events: none;
 }
 
 .darkCircle{
@@ -645,8 +658,19 @@ body{
         width: 60vmin;
         height: 60vmin;
         display: block;     
-        /* aspect-ratio: 1:1; */
         background: #FFE0CB;
+    }
+
+    .saveButtonContainer{
+        width: 8.6vw;
+        height: 3.2vw;
+        line-height: 3.2vw;
+        background-color: #049D5B;;
+        place-items: center;
+        justify-self: start;
+        margin-top: 3.2vw;
+        grid-area: 2/2/3/3;
+        cursor: pointer;
     }
 
     .resetButtonContainer{
@@ -657,6 +681,11 @@ body{
         place-items: center;
         justify-self: start;
         grid-area: 2/2/3/3;
+        cursor: pointer;
+    }
+
+    .resetButtonText{
+        color: #FFC508;
     }
     
     .leftCanvasText{
@@ -670,39 +699,55 @@ body{
         justify-self: end;
         grid-area: 2/2/3/3;
     }
-
-    .resetButtonText{
-        color: #FFC508;
-        /* margin-left: 1.7vw;
-        margin-top: 0.8vw; */
-        /* grid-area: 2/2/3/3; */
-    }
-
+    
     .redCornerLeft{
         width: 0;
         height: 0;
         border-left: 13.385vw solid transparent;
         border-right: 13.385vw solid transparent;
         border-bottom: 13.385vw solid #EC4E4C;
-        transform: rotate(225deg);
+        rotate: 225deg;
         justify-self: start;
         align-self: end;
         margin-left: -8.7vw;
-        margin-top: 8.7vw;
+        margin-bottom: -2vw;
         grid-area: 2/1/3/2;
+    }
+    .redCornerRight{
+        width: 0;
+        height: 0;
+        border-left: 13.385vw solid transparent;
+        border-right: 13.385vw solid transparent;
+        border-bottom: 13.385vw solid #EC4E4C;
+        rotate: -225deg;
+        justify-self: end;
+        align-self: end;
+        margin-right: -8.7vw;
+        margin-bottom: -2vw;
+        grid-area: 2/3/3/4;
     }
 
     .brush{
+        display: flex;
         width: 3.23vw;
         height: 3.23vw;
-        background-color: #EC4E4C;
+        background-color: #a92724;
         margin-bottom: 1.51vw;
         justify-self: start;
         align-self: end;
         grid-area: 1/3/2/4;
+        cursor: pointer;
+    }
+
+    .brushImg{
+        display: block;
+        width: 70%;
+        height: 70%;
+        margin: auto
     }
 
     .marker{
+        display: flex;
         width: 3.23vw;
         height: 3.23vw;
         background-color: #EC4E4C;
@@ -710,9 +755,18 @@ body{
         justify-self: start;
         align-self: end;
         grid-area: 1/3/2/4;
+        cursor: pointer;
+    }
+
+    .markerImg{
+        display: block;
+        width: 70%;
+        height: 70%;
+        margin: auto
     }
 
     .eraser{
+        display: flex;
         width: 3.23vw;
         height: 3.23vw;
         background-color: #EC4E4C;
@@ -720,17 +774,18 @@ body{
         justify-self: start;
         align-self: end;
         grid-area: 1/3/2/4;
+        cursor: pointer;
     }
 
     .eraserImg{
+        display: block;
         width: 70%;
         height: 70%;
-        justify-self: center;
-        align-self: center;
-        grid-area: 1/3/2/4;
+        margin: auto
     }
 
     .ChoosingButton{
+        display: flex;
         width: 3.23vw;
         height: 3.23vw;
         background-color: #EC4E4C;
@@ -738,7 +793,7 @@ body{
         margin-top: 30px;
         align-self: end;
         grid-area: 1/3/2/4;
-        justify-items: center;
+        cursor: pointer;
     }
         .greenChoosingButton{
             margin-bottom: 7.97vw;
@@ -776,9 +831,11 @@ body{
         }
 
     .circleColour{
+        display: block;
         width: 1.25vw;
         height: 1.25vw;
         border-radius: 50%;
+        margin: auto;
     }
         .greenColour{
             background-color: #049D5B;
@@ -802,65 +859,328 @@ body{
             background-color: #a92724;
         }
 
-/*
-.move-area{
-    width: 100vw;
-    height: 100vw;
-    background: lightgoldenrodyellow;
-    display: flex;
-    gap: 5%;
-    justify-content: center;
-}
+/* Экран 3 */
 
-.container{
+/* .greenLeftCorner1Container{
+    width: 20vw;
+    height: 26.615vw;
+    background-color: #552828;
+    align-self: start;
+    justify-self: start;
+    grid-area: 1/1/1/1;
+    z-index: 1;
+} */
+
+.canvas2{
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1; 
 }
 
-.eye{
-    position: relative;
-    display: inline-block;
+/* Экран 4 */
+
+.s4-beigeSquare{
+    width: 1fr;
+    height: 1fr;
+    background-color: #F3CCB1;
+    grid-area: 2/2/3/3;
+}
+
+.s4-beigeRectangle1{
+    width: 2.6vw;
+    height: 1fr;
+    background-color: #F3CCB1;
+    justify-self: start;
+    grid-area: 3/2/4/3;
+}
+
+.s4-beigeRectangle2{
+    width: 2.6vw;
+    height: 1fr;
+    background-color: #F3CCB1;
+    justify-self: end;
+    grid-area: 3/2/4/3;
+}
+
+.s4-beigeRectangle3{
+    width: 1fr;
+    height: 2.6vw;
+    background-color: #F3CCB1;
+    align-self: start;
+    grid-area: 3/3/4/4;
+}
+
+.s4-beigeRectangle4{
+    width: 1fr;
+    height: 2.6vw;
+    background-color: #F3CCB1;
+    align-self: end;
+    grid-area: 2/1/3/2;
+}
+
+.s4-littleBeigeRectangleLeft{
+    width: 2.6vw;
+    height: 5.417vw;
+    background-color: #F3CCB1;
+    justify-self: end;
+    align-self: start;
+    grid-area: 3/1/4/2;
+}
+
+.s4-littleBeigeRectangleCenter1{
+    width: 4.245vw;
+    height: 2.6vw;
+    background-color: #F3CCB1;
+    justify-self: start;
+    margin-left: 2.6vw;
+    margin-top: 7.56vw;
+    grid-area: 3/2/4/3;
+}
+
+.s4-littleBeigeRectangleCenter2{
+    width: 4.245vw;
+    height: 2.6vw;
+    background-color: #F3CCB1;
+    justify-self: start;
+    margin-left: 2.6vw;
+    margin-top: 12.66vw;
+    grid-area: 3/2/4/3;
+}
+
+.s4-littleBeigeRectangleCenter3{
+    width: 8.5vw;
+    height: 2.6vw;
+    background-color: #F3CCB1;
+    justify-self: end;
+    margin-right: 2.6vw;
+    margin-top: 4.96vw;
+    grid-area: 3/2/4/3;
+}
+
+.s4-littleBeigeRectangleCenter4{
+    width: 4.245vw;
+    height: 2.6vw;
+    background-color: #F3CCB1;
+    justify-self: end;
+    margin-right: 2.6vw;
+    margin-top: 12.66vw;
+    grid-area: 3/2/4/3;
+}
+
+.s4-littleBeigeRectangleCenter5{
+    width: 4.245vw;
+    height: 2.6vw;
+    background-color: #F3CCB1;
+    margin-left: 7vw;
+    margin-top: 18vw;
+    grid-area: 3/2/4/3;
+}
+
+.s4-littleBeigeRectangleCenter6{
+    width: 4.245vw;
+    height: 2.6vw;
+    background-color: #F3CCB1;
+    margin-left: 22.08vw;
+    align-self: end;
+    grid-area: 3/2/4/3;
+}
+
+.s4-beigeRectangleAtCenterBottom{
+    width: 11vw;
+    height: 12vw;
+    background-color: #F3CCB1;
+    justify-self: center;
+    align-self: end;
+    grid-area: 3/2/4/3;
+}
+
+.s4-beigeStarContainer{
+    width: 2.55vw;
+    height: 2.55vw;
+    margin-top: 8.5vw;
+    margin-left: 11.094vw;
+    grid-area: 3/2/4/3;
+}
+
+.s4-beigeStar{
+    width: 2.55vw;
+    height: 2.55vw;
+}
+
+.s4-beigeCircle{
+    width: 2.6vw;
+    height: 2.6vw;
+    background-color: #F3CCB1;
     border-radius: 50%;
-    height: 60px;
-    width: 60px;
-    background: lavender;
+    margin-top: 8.36vw;
+    margin-left: 19.69vw;
+    grid-area: 3/2/4/3;
 }
 
-.move-area{
-    width: 100vw;
-    height: 100vw;
-    padding: 10% 45%;
-    background: lightgoldenrodyellow;
-    display: flex;
+.s4-buttonLeft{
+    width: 5.94vw;
+    height: 2.6vw;
+    background-color: #FF6800;
+    align-self: start;
+    margin-left: 5.3vw;
+    grid-area: 3/2/4/3;
+    place-items: center;
+    line-height: 3vw;
+    cursor: pointer;
 }
 
-.eye:after{
-    bottom: 0.5vw;
-    position: absolute;
-    right: 1vw;
-    width: 2vw;
-    height: 2vw;
-    background: darkblue;
+.s4-buttonRight{
+    width: 5.94vw;
+    height: 2.6vw;
+    background-color: #FF6800;
+    align-self: start;
+    margin-left: 22.08vw;
+    grid-area: 3/2/4/3;
+    place-items: center;
+    line-height: 3vw;
+    cursor: pointer;
+}
+
+.textBeigeColor{
+    color: #F3CCB1;
+}
+
+.s4-orangeTriangleRight{
+    width: 0;
+    height: 0;
+    border-left: 1.3vw solid transparent;
+    border-right: 1.3vw solid transparent;
+    border-bottom: 2.8vw solid #FF6800;
+    rotate: 90deg;
+    margin-top: 2.4vw;
+    margin-left: 28.1vw;
+    grid-area: 3/2/4/3;
+    cursor: pointer;
+}
+
+.s4-orangeTriangleLeft{
+    width: 0;
+    height: 0;
+    border-left: 1.3vw solid transparent;
+    border-right: 1.3vw solid transparent;
+    border-bottom: 2.8vw solid #FF6800;
+    rotate: -90deg;
+    margin-top: 2.4vw;
+    margin-left: 2.6vw;
+    grid-area: 3/2/4/3;
+    cursor: pointer;
+}
+
+.s4-littleBeigeSquare{
+    width: 6vw;
+    height: 6vw;
+    background-color: #F3CCB1;
+    align-self: end;
+    margin-left: 5.2vw;
+    grid-area: 2/3/3/4;
+}
+
+.s4-BeigeTriangle1{
+    width: 0;
+    height: 0;
+    border-left: 1.3vw solid transparent;
+    border-right: 1.3vw solid transparent;
+    border-bottom: 2.8vw solid #F3CCB1;
+    align-self: end;
+    rotate: -90deg;
+    margin-left: 16.15vw;
+    grid-area: 2/3/3/4;
+}
+
+.s4-BeigeTriangle2{
+    width: 0;
+    height: 0;
+    border-left: 1.3vw solid transparent;
+    border-right: 1.3vw solid transparent;
+    border-bottom: 2.8vw solid #F3CCB1;
+    rotate: 90deg;
+    margin-left: 11.354vw;
+    margin-top: 20vw;
+    grid-area: 2/3/3/4;
+}
+
+.s4-BeigeTriangle3{
+    width: 0;
+    height: 0;
+    border-left: 1.3vw solid transparent;
+    border-right: 1.3vw solid transparent;
+    border-bottom: 2.8vw solid #F3CCB1;
+    margin-left: 6vw;
+    align-self: end;
+    grid-area: 1/2/2/3;
+}
+
+.s4-BeigeTriangle4{
+    width: 0;
+    height: 0;
+    border-left: 1.3vw solid transparent;
+    border-right: 1.3vw solid transparent;
+    border-bottom: 2.8vw solid #F3CCB1;
+    rotate: -90deg;
+    margin-top: 20vw;
+    justify-self: end;
+    grid-area: 2/1/3/2;
+}
+
+.s4-BeigeTriangle5{
+    width: 0;
+    height: 0;
+    border-left: 1.3vw solid transparent;
+    border-right: 1.3vw solid transparent;
+    border-bottom: 2.8vw solid #F3CCB1;
+    rotate: 180deg;
+    margin-left: 12vw;
+    margin-bottom: 2.6vw;
+    align-self: end;
+    grid-area: 2/1/3/2;
+}
+
+.s4-orangeCircle{
+    width: 22.52vw;
+    height: 22.52vw;
+    background-color: #FF6800;
     border-radius: 50%;
-    border: 0.2px solid black;
-    content: " ";
+    grid-area: 3/1/4/2;
+    margin-left: 2vw;
+    align-self: end;
 }
 
-.cursor{
-    position: absolute;
-    height: 1vw;
-    width: 1vw;
-    border-radius: 50%;
-    animation: color_change 8s infinite linear;
+.s4-blueStarContainer{
+    width: 14.64vw;
+    height: 14.64vw;
+    align-self: end;
+    margin-left: 11vw;
+    grid-area: 3/3/4/4;
 }
 
-@keyframes color_change {
-    0%{background: red;}
-    25%{background: orange;}
-    50%{background: yellow;}
-    75%{background: blue;}
-    100%{background: red;}
+.s4-blueStar{
+    width: 14.64vw;
+    height: 14.64vw;
 }
-*/
 
+.s4-orangeRectangle{
+    width: 21.667vw;
+    height: 4.22vw;
+    background-color: #FF6800;;
+    margin-top: 12vw;
+    justify-self: end;
+    grid-area: 2/3/3/4;
+}
 
-
+.s4-blueRectangle{
+    width: 16.563vw;
+    height: 6.615vw;
+    background-color: #5065FF;
+    margin-top: 2vw;
+    justify-self: start;
+    grid-area: 2/1/3/2;
+}
